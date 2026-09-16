@@ -10,8 +10,8 @@ Para los *productores agrícolas del Valle del Cauca*, que necesitan *vender dir
 ---
 
 # Integrantes del Equipo
-Emmanuel Vidal Moreno
-Josse Manuel Bolaños
+Emmanuel Vidal Moreno -
+Josse Manuel Bolaños -
 Michael David Robayos  
 
 ---
