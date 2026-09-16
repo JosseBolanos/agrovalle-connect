@@ -43,10 +43,8 @@ Para que una Historia de Usuario (HU) sea considerada **"Hecha" (Done)** y acept
 
 Al incorporar este documento al repositorio, los integrantes del equipo declaran haber leído, comprendido y aceptado la presente **Definition of Done (DoD)** como la norma oficial de calidad para la entrega de cada Historia de Usuario en **AgroValle Connect**:
 
-| Nombre del Integrante |  Estado / Firma |
-| :--- | :--- | :--- |
-| **Josse Manuel Bolaños**  | ✅ Firmado |
+| Nombre del Integrante | Estado / Firma |
+| :--- | :--- |
+| **Josse Manuel Bolaños** | ✅ Firmado |
 | **Michael robayos** | ✅ Firmado |
 | **Emanuel vidal** | ✅ Firmado |
-
-*Fecha de formalización: 16 de septiembre de 2026*
