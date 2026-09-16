@@ -36,3 +36,17 @@ Para que una Historia de Usuario (HU) sea considerada **"Hecha" (Done)** y acept
 ## 5. 🚀 Despliegue y Aceptación
 - [ ] La funcionalidad está desplegada y funcional en el entorno de pruebas/desarrollo local.
 - [ ] El **Product Owner** o líder de equipo ha verificado la funcionalidad y dado su visto bueno para el cierre de la historia.
+
+---
+
+## ✍️ Firma y Conformidad del Equipo de Desarrollo
+
+Al incorporar este documento al repositorio, los integrantes del equipo declaran haber leído, comprendido y aceptado la presente **Definition of Done (DoD)** como la norma oficial de calidad para la entrega de cada Historia de Usuario en **AgroValle Connect**:
+
+| Nombre del Integrante | Rol en el Proyecto | Estado / Firma |
+| :--- | :--- | :--- |
+| **Josse Manuel Bolaños** | Lead Developer / Frontend | ✅ Firmado |
+| **Michael robayos** | Product Owner / Backend | ✅ Firmado |
+| **Emanuel vidal** | Scrum Master / QA | ✅ Firmado |
+
+*Fecha de formalización: 16 de septiembre de 2026*
