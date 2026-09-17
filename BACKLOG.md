@@ -1,201 +1,174 @@
-# Product Backlog - AgroValle Connect 
+#  AgroValle Connect — Product Backlog
 
-
----
-
-## Historias de Usuario y Criterios de Aceptación BDD
-
-### Tabla 1. HU-01: Registro de Agricultores
-Como Agricultor, quiero registrarme en la plataforma para ofrecer mis productos.
-Priorización: Must
-## Estimación: 3 Story Points
- Escenario BDD:
-   Given que el usuario ingresa a /api/v1/auth/register.
-  When envía un JSON con nombre, ubicacion_valle y cedula válida.
-  Then el sistema responde con un status 201 Created y el registro persiste en la base de datos PostgreSQL.
+Este documento contiene el Product Backlog oficial para el proyecto **AgroValle Connect**, estructurado bajo metodología Scrum con estimación en puntos de historia (Escala de Fibonacci), priorización MoSCoW y escenarios BDD (*Given-When-Then*).
 
 ---
 
-### Tabla 2. HU-02: Publicación de Productos
-Como Agricultor, quiero publicar mis cosechas para que sean visibles.
- Priorización: Must
- Estimación: 3 Story Points
- Escenario BDD:
-   Given un agricultor autenticado con token JWT.
-   When publica un producto con tipo, cantidad y fecha_cosecha.
-   Then el sistema valida que la fecha no sea anterior a hoy y retorna un ID de producto único.
+##  Bloque 1: Historias Base (Requerimientos de Cátedra)
+
+###  HU-01: Registro de Agricultores
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Agricultor, quiero registrarme en la plataforma para ofrecer mis productos.
+* **Criterios de Aceptación (BDD):**
+  * **Given** que el usuario ingresa a `/api/v1/auth/register`.
+  * **When** envía un JSON con `nombre`, `ubicacion_valle` y `cedula` válida.
+  * **Then** el sistema responde con un status `201 Created` y el registro persiste en la base de datos PostgreSQL.
 
 ---
 
-### Tabla 3. HU-03: Visualización de Precios Regionales
-Como Usuario, quiero ver los precios promedio del Valle para negociar mejor.
-Priorización: Must
- Estimación: 3 Story Points
- Escenario BDD:
- Given que existen 50 transacciones de "Café" en las últimas 24 horas.
- When solicito el precio promedio de "Café".
- Then el sistema calcula la media aritmética y despliega el valor exacto en pesos colombianos.
+###  HU-02: Publicación de Productos
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Agricultor, quiero publicar mis cosechas para que sean visibles.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un agricultor autenticado con token JWT.
+  * **When** publica un producto con `tipo`, `cantidad` y `fecha_cosecha`.
+  * **Then** el sistema valida que la fecha no sea anterior a hoy y retorna un ID de producto único.
 
 ---
 
-### Tabla 4. HU-04: Búsqueda y Filtrado por Municipio
-Como Comprador, quiero filtrar los productos por municipio para reducir costos de transporte.
- Priorización: Must
- Estimación: 3 Story Points
- Escenario BDD:
- Given que existen productos publicados en diferentes municipios del Valle.
- When el comprador selecciona el municipio "Palmira" en el filtro.
- Then el sistema muestra únicamente las cosechas disponibles en "Palmira".
+###  HU-03: Visualización de Precios Regionales
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Usuario, quiero ver los precios promedio del Valle para negociar mejor.
+* **Criterios de Aceptación (BDD):**
+  * **Given** que existen 50 transacciones de "Café" en las últimas 24 horas.
+  * **When** solicito el precio promedio de "Café".
+  * **Then** el sistema calcula la media aritmética y despliega el valor exacto en pesos colombianos.
 
 ---
 
-### Tabla 5. HU-05: Modulación de Roles y Permisos
-Como Administrador, quiero asignar roles para restringir el acceso a funciones del sistema.
- Priorización: Must
- Estimación: 3 Story Points
- Escenario BDD:
- Given un usuario autenticado con rol "Comprador".
- When intenta ingresar a la ruta de administración `/api/v1/admin/users`.
- Then el sistema bloquea el acceso con código HTTP 403 Forbidden.
+##  Bloque 2: Búsqueda y Filtrado
+
+###  HU-04: Búsqueda y Filtrado por Municipio y Categoría
+* **Prioridad:** Must Have | **Estimación:** 5 Story Points
+* **Descripción:** Como Comprador, quiero filtrar las ofertas por **Municipio** y **Categoría** para encontrar cosechas en zonas específicas.
+* **Criterios de Aceptación (BDD):**
+  * **Given** una petición `GET` a `/api/v1/productos/buscar` con parámetros `municipio` y `categoria`.
+  * **When** el servidor procesa la consulta en PostgreSQL.
+  * **Then** retorna `200 OK` con la lista filtrada de productos pertenecientes a ese municipio y categoría.
 
 ---
 
-### Tabla 6. HU-06: Solicitud de Transporte Logístico
-Como Agricultor, quiero cotizar transporte para enviar mi cosecha al comprador.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given una venta confirmada entre origen "Candelaria" y destino "Cali".
-   When el agricultor solicita el cálculo de flete ingresando el peso en toneladas.
-   Then el sistema calcula la tarifa y muestra el costo exacto del envío.
+###  HU-05: Búsqueda Rápida por Palabra Clave
+* **Prioridad:** Could Have | **Estimación:** 2 Story Points
+* **Descripción:** Como Usuario, quiero buscar productos escribiendo el nombre en la barra de búsqueda para acceder rápidamente.
+* **Criterios de Aceptación (BDD):**
+  * **Given** que el usuario ingresa un texto de búsqueda (*Ej: "Yuca", "Plátano"*).
+  * **When** realiza la petición de consulta.
+  * **Then** el sistema retorna los productos cuyo nombre coincida parcialmente con el texto ingresado.
 
 ---
 
-### Tabla 7. HU-07: Aceptación de Fletes por Transportista
-Como Transportista, quiero aceptar solicitudes de transporte para gestionar la entrega.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given una lista de solicitudes de transporte en estado "Pendiente".
-   When el transportista presiona "Aceptar Flete".
-   Then el sistema asigna el envío al transportista y le entrega la dirección de recogida.
+##  Bloque 3: Transporte, Logística y Pedidos
+
+###  HU-06: Solicitud de Pedido y Transporte por Lote
+* **Prioridad:** Must Have | **Estimación:** 5 Story Points
+* **Descripción:** Como Comprador, quiero solicitar un lote de producto e indicar la modalidad de transporte (*En Finca o Flete Acordado*) para iniciar la negociación.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un comprador autenticado que selecciona un producto.
+  * **When** envía la cantidad en kilos y el tipo de transporte al endpoint `/api/v1/pedidos`.
+  * **Then** el sistema crea la orden en estado "Pendiente" y notifica al agricultor.
 
 ---
 
-### Tabla 8. HU-08: Calificación de Vendedores
-Como Comprador, quiero calificar al agricultor para generar confianza en la comunidad.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given un pedido completado y entregado con éxito.
-   When el comprador envía una nota de 1 a 5 estrellas con un comentario.
-   Then el sistema guarda la calificación y actualiza el promedio del agricultor.
+###  HU-07: Asignación de Punto de Recolección y Despacho
+* **Prioridad:** Should Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Agricultor, quiero definir la dirección del centro de acopio o finca para que el transportista/comprador sepa dónde recoger la carga.
+* **Criterios de Aceptación (BDD):**
+  * **Given** una orden en estado "Aceptada".
+  * **When** el agricultor asigna la vereda/municipio de recolección y la fecha estimada de despacho.
+  * **Then** el sistema actualiza la guía de transporte vinculada al pedido.
 
 ---
 
-### Tabla 9. HU-09: Negociación Directa de Precios
-Como Comprador, quiero enviar una propuesta de compra para negociar un lote completo.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given un producto publicado con un precio base de $3.000 / kg.
-   When el comprador propone un valor de $2.600 / kg por todo el lote.
-   Then el sistema crea una contraoferta y notifica al agricultor para su aprobación.
+###  HU-08: Confirmación de Entrega y Recepción de Carga
+* **Prioridad:** Should Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Comprador, quiero confirmar la llegada del transporte con la cosecha para dar por finalizado el pedido.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un pedido marcado como "En Tránsito".
+  * **When** el comprador presiona "Confirmar Recepción de Carga".
+  * **Then** el estado de la orden cambia a "Completado" y libera la opción de calificación.
 
 ---
 
-### Tabla 10. HU-10: Alertas Climáticas para Cosechas
-Como Agricultor, quiero recibir alertas del clima para proteger mis cultivos a tiempo.
- Priorización: Could
- Estimación: 3 Story Points
- Escenario BDD:
- Given que el servicio meteorológico detecta lluvias fuertes en "Dagua".
-   When el sistema procesa el reporte del tiempo.
-   Then envía una alerta a los agricultores registrados en ese municipio.
+##  Bloque 4: Calificación y Reputación
+
+###  HU-09: Calificación y Reseña de Transacciones
+* **Prioridad:** Should Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Comprador o Agricultor, quiero calificar la calidad del producto y el servicio de entrega para generar reputación en la plataforma.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un pedido en estado "Completado".
+  * **When** el usuario envía una puntuación (1 a 5 estrellas) y un comentario a `/api/v1/calificaciones`.
+  * **Then** el sistema almacena la reseña y actualiza el promedio del perfil evaluado.
 
 ---
 
-### Tabla 11. HU-11: Chat de Negociación Directa
-Como Agricultor, quiero chatear con el comprador para acordar la entrega.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given una compra en proceso entre un agricultor y un comprador.
-  When uno de los dos envía un mensaje en el chat.
-   Then el sistema entrega el mensaje al instante en la pantalla del otro usuario.
+##  Bloque 5: Gestión de Usuarios, Ofertas y Seguridad
+
+###  HU-10: Registro e Identificación de Compradores
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Comprador, quiero registrarme en la plataforma para ponerme en contacto con los agricultores.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un usuario en el formulario de registro comercial.
+  * **When** envía nombre, correo y tipo de comprador (*Mayorista, Minorista, Consumidor*).
+  * **Then** el sistema persiste el usuario en la base de datos y le permite iniciar sesión.
 
 ---
 
-### Tabla 12. HU-12: Reporte Visual de Ventas
-Como Agricultor, quiero ver gráficos de mis ventas para saber cuánto he ganado.
- Priorización: Could
- Estimación: 3 Story Points
-Escenario BDD:
-   Given un agricultor con ventas realizadas en los últimos 3 meses.
-   When ingresa a su panel de estadísticas.
-   Then el sistema dibuja un gráfico con el total de dinero e ingresos por mes.
+###  HU-11: Autenticación e Inicio de Sesión (JWT)
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Usuario registrado, quiero iniciar sesión de forma segura para gestionar mis productos y pedidos.
+* **Criterios de Aceptación (BDD):**
+  * **Given** credenciales válidas enviadas a `/api/v1/auth/login`.
+  * **When** el servidor valida los datos.
+  * **Then** responde `200 OK` devolviendo el token de acceso JWT.
 
 ---
 
-### Tabla 13. HU-13: Verificación de Cédula y Documentos
-Como Administrador, quiero revisar los documentos del agricultor para habilitar su cuenta.
- Priorización: Must
- Estimación: 3 Story Points
-Escenario BDD:
-   Given una cuenta de agricultor en estado "Pendiente".
-   When el administrador revisa y aprueba la cédula del usuario.
-   Then la cuenta pasa a estado "Verificado" y ya puede publicar productos.
+###  HU-12: Detalle Completo del Producto y Agricultor
+* **Prioridad:** Should Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Comprador, quiero ver la ficha detallada de un producto para consultar descripción, fotos y predio de origen.
+* **Criterios de Aceptación (BDD):**
+  * **Given** una solicitud `GET` a `/api/v1/productos/{id}`.
+  * **When** el producto existe en la base de datos.
+  * **Then** el sistema responde con la información del lote y los datos de contacto del agricultor.
 
 ---
 
-### Tabla 14. HU-14: Estado del Envío en Tiempo Real
-Como Comprador, quiero saber dónde viene mi pedido para recibirlo a tiempo.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given un producto en camino con estado "En Tránsito".
-   When el transportista marca la opción "Cerca al destino".
-   Then el sistema manda una notificación al comprador avisando la llegada.
+###  HU-13: Modificación y Cancelación de Ofertas
+* **Prioridad:** Should Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Agricultor, quiero modificar el precio o cambiar el estado a "Agotado" cuando no tenga disponibilidad.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un agricultor autenticado dueño de una publicación.
+  * **When** actualiza la cantidad o el estado de la oferta.
+  * **Then** el sistema guarda los cambios y actualiza la visibilidad en el catálogo.
 
 ---
 
-### Tabla 15. HU-15: Cancelación de Publicaciones
-Como Agricultor, quiero retirar un producto si se dañó o si ya lo vendí por fuera.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given un producto publicado sin compras pendientes.
-   When el agricultor presiona "Retirar Publicación".
-   Then el sistema quita la oferta del catálogo y nadie más la puede ver.
-  ---
-
-### Tabla 16. HU-16: Historial de Transacciones e Impresión de Recibos
-Como Comprador, quiero ver el historial de mis compras para descargar los recibos de pago.
- Priorización: Should
- Estimación: 3 Story Points
-Escenario BDD:
-   Given un comprador autenticado en la plataforma.
-   When ingresa a la sección de "Mis Compras" y presiona "Descargar Recibo".
-   Then el sistema genera un documento PDF con el detalle de la transacción.
+###  HU-14: Historial de Pedidos y Guías de Transporte
+* **Prioridad:** Should Have | **Estimación:** 3 Story Points
+* **Descripción:** Como Usuario, quiero consultar el historial de compras/ventas pasadas para llevar control de mis operaciones.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un usuario autenticado consultando `/api/v1/pedidos/historial`.
+  * **When** solicita sus registros.
+  * **Then** el sistema devuelve las órdenes realizadas con su estado, fecha y montos.
 
 ---
 
-### Tabla 17. HU-17: Recuperación y Cambio de Contraseña
-Como Usuario, quiero restablecer mi contraseña por correo si la olvido para no perder el acceso.
- Priorización: Must
- Estimación: 3 Story Points
- Escenario BDD:
- Given un usuario que no recuerda su clave de acceso.
- When ingresa su correo en la opción "Olvidé mi contraseña".
- Then el sistema envía un enlace seguro con un token temporal para restablecerla.
+###  HU-15: Verificación y Moderación de Agricultores (Admin)
+* **Prioridad:** Could Have | **Estimación:** 2 Story Points
+* **Descripción:** Como Administrador, quiero verificar el perfil del agricultor para otorgarle una insignia de confianza.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un usuario con rol Administrador.
+  * **When** aprueba la documentación de un agricultor.
+  * **Then** la cuenta recibe la insignia "Agricultor Verificado".
 
 ---
 
-### Tabla 18. HU-18: Panel de Soporte y Reporte de Problemas
-Como Usuario, quiero enviar reportes de soporte cuando tenga inconvenientes con un pedido.
- Priorización: Could
- Estimación: 3 Story Points
- Escenario BDD:
- Given un usuario que experimenta un problema con un envío o pago.
- When completa el formulario de soporte con el asunto y la evidencia.
- Then el sistema genera un ticket de atención y lo asigna al equipo administrador.
+##  Resumen Estadístico del Backlog
+
+| Categoría | Historias de Usuario | Puntos de Historia (Fibonacci) |
+| :--- | :---: | :---: |
+| **Must Have (Esenciales)** | HU-01, HU-02, HU-03, HU-04, HU-06, HU-10, HU-11 | 25 pts |
+| **Should Have (Deseables)** | HU-07, HU-08, HU-09, HU-12, HU-13, HU-14 | 18 pts |
+| **Could Have (Opcionales)** | HU-05, HU-15 | 4 pts |
+| **TOTAL** | **15 Historias de Usuario** | **47 Story Points** |
