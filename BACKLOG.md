@@ -173,7 +173,7 @@ Este documento contiene el Product Backlog oficial para el proyecto **AgroValle 
 | **Could Have (Opcionales)** | HU-05, HU-15 | 4 pts |
 | **TOTAL** | **15 Historias de Usuario** | **47 Story Points** |
 
-
+---
 # 🚀 Sprint Backlog — Sprint 1
 
 * **Capacidad Estimada:** 9 Story Points
@@ -182,7 +182,7 @@ Este documento contiene el Product Backlog oficial para el proyecto **AgroValle 
 
 ---
 
-## 📌 Historias de Usuario Seleccionadas
+## Historias de Usuario Seleccionadas
 
 ### 🔹 HU-01: Registro de Agricultores
 * **Prioridad:** Must Have | **Estimación:** 3 Story Points
