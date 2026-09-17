@@ -8,7 +8,7 @@
 ### Tabla 1. HU-01: Registro de Agricultores
 Como Agricultor, quiero registrarme en la plataforma para ofrecer mis productos.
 Priorización: Must
- Estimación: 3 Story Points
+## Estimación: 3 Story Points
  Escenario BDD:
    Given que el usuario ingresa a /api/v1/auth/register.
   When envía un JSON con nombre, ubicacion_valle y cedula válida.
