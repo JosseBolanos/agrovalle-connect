@@ -172,3 +172,56 @@ Este documento contiene el Product Backlog oficial para el proyecto **AgroValle 
 | **Should Have (Deseables)** | HU-07, HU-08, HU-09, HU-12, HU-13, HU-14 | 18 pts |
 | **Could Have (Opcionales)** | HU-05, HU-15 | 4 pts |
 | **TOTAL** | **15 Historias de Usuario** | **47 Story Points** |
+
+
+# 🚀 Sprint Backlog — Sprint 1
+
+* **Capacidad Estimada:** 9 Story Points
+* **Duración del Sprint:** 2 Semanas
+* **Objetivo del Sprint (Sprint Goal):** Permitir el registro de usuarios agricultores, la publicación de cosechas agrícolas y la consulta filtrada por municipio y categoría, habilitando el flujo core de oferta en la plataforma.
+
+---
+
+## 📌 Historias de Usuario Seleccionadas
+
+### 🔹 HU-01: Registro de Agricultores
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points
+* **Responsable:** Backend Developer
+* **Descripción:** Como Agricultor, quiero registrarme en la plataforma para ofrecer mis productos.
+* **Criterios de Aceptación (BDD):**
+  * **Given** que el usuario ingresa a `/api/v1/auth/register`.
+  * **When** envía un JSON con `nombre`, `ubicacion_valle` y `cedula` válida.
+  * **Then** el sistema responde con un status `201 Created` y el registro persiste en la base de datos PostgreSQL.
+
+---
+
+### 🔹 HU-02: Publicación de Productos
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points
+* **Responsable:** Backend Developer
+* **Descripción:** Como Agricultor, quiero publicar mis cosechas para que sean visibles.
+* **Criterios de Aceptación (BDD):**
+  * **Given** un agricultor autenticado con token JWT.
+  * **When** publica un producto con `tipo`, `cantidad` y `fecha_cosecha`.
+  * **Then** el sistema valida que la fecha no sea anterior a hoy y retorna un ID de producto único.
+
+---
+
+### 🔹 HU-04: Búsqueda y Filtrado por Municipio y Categoría
+* **Prioridad:** Must Have | **Estimación:** 3 Story Points *(Ajustado a alcance Sprint 1)*
+* **Responsable:** Fullstack / Backend Developer
+* **Descripción:** Como Comprador, quiero filtrar las ofertas por **Municipio** y **Categoría** para encontrar cosechas en zonas específicas.
+* **Criterios de Aceptación (BDD):**
+  * **Given** una petición `GET` a `/api/v1/productos/buscar` con parámetros `municipio` y `categoria`.
+  * **When** el servidor procesa la consulta en PostgreSQL.
+  * **Then** retorna `200 OK` con la lista filtrada de productos pertenecientes a ese municipio y categoría.
+
+---
+
+## Resumen de Carga de Trabajo
+
+| Historia de Usuario | Puntos de Historia | Estado |
+| :--- | :---: | :---: |
+| **HU-01:** Registro de Agricultores | 3 pts | Por Hacer |
+| **HU-02:** Publicación de Productos | 3 pts | Por Hacer |
+| **HU-04:** Búsqueda por Municipio y Categoría | 3 pts | Por Hacer |
+| **TOTAL SPRINT 1** | **9 pts** | **Comprometidos** |
