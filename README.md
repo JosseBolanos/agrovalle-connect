@@ -10,9 +10,9 @@ Para los **productores agrícolas del Valle del Cauca**, que necesitan **vender 
 ---
 
 ## 👥 Integrantes del Equipo
-* **Emanuel** -
+* **Emanuel Vidal** -
 * **Josse Manuel Bolaños Alvarez** -
-* **Michael robayos** - 
+* **Michael Robayo** - 
 
 ---
 
