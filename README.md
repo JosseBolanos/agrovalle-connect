@@ -4,25 +4,25 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1+-green.svg)](https://spring.io/projects/spring-boot)
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
 
-## Descripción y Declaración de Visión del Producto
-Para los *productores agrícolas del Valle del Cauca*, que necesitan *vender directamente sus cosechas sin intermediarios*, *AgroValle Connect* es una *plataforma web en Java / Spring Boot* que **conecta la oferta y la demanda comercial a un precio justo y en tiempo real*. A diferencia de los *intermediarios tradicionales*, nuestro producto *garantiza trazabilidad, programación logística y contratos de API transparentes*.
+Descripción y Declaración de Visión del Producto
+Para los **productores agrícolas del Valle del Cauca**, que necesitan **vender directamente sus cosechas sin intermediarios**, **AgroValle Connect** es una **plataforma web en Java / Spring Boot** que **conecta la oferta y la demanda comercial a un precio justo y en tiempo real**. A diferencia de los **intermediarios tradicionales**, nuestro producto **garantiza trazabilidad, programación logística y contratos de API transparentes**.
 
 ---
 
-## Integrantes del Equipo
-Emanuel Vidal -
-Josse Manuel Bolaños Alvarez -
-Michael Robayo - 
+ Integrantes del Equipo
+* **Emmanuel Vidal Moreno**
+* **Josse Manuel Bolaños**
+* **Michael David Robayos**
 
 ---
 
-## Estrategia de Control de Versiones (GitFlow)
+ Estrategia de Control de Versiones (GitFlow)
 
 Adoptamos la estrategia **GitFlow** para asegurar lanzamientos versionados estables, permitiendo el trabajo aislado mediante *feature branches* asignadas a cada Historia de Usuario (HU), evitando la contaminación de la rama de producción (`main`).
 
 ### Justificación Técnica
-* Aislamiento Total:** Ningún código entra a `main` sin haber pasado por una revisión por pares (Peer Review / Pull Request) y las pruebas automatizadas del pipeline CI/CD.
-* Control de Calidad:** Garantiza que solo los incrementos con un estado de *Readiness* validado bajo normas ISO/IEC 25010 lleguen a despliegue.
+* **Aislamiento Total:** Ningún código entra a `main` sin haber pasado por una revisión por pares (Peer Review / Pull Request) y las pruebas automatizadas del pipeline CI/CD.
+* **Control de Calidad:** Garantiza que solo los incrementos con un estado de *Readiness* validado bajo normas ISO/IEC 25010 lleguen a despliegue.
 
 ```mermaid
 gitGraph
